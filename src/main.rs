@@ -1,20 +1,18 @@
-use lds_rs::Vdcorput;
+use lds_rs::Sphere;
 use palette::encoding::Srgb;
 use palette::rgb::Rgb;
-use palette::{FromColor, Lch};
+use palette::{FromColor, Lab};
 // use palette::white_point::D65;
 
 fn main() {
-    let mut vdc_l = Vdcorput::new(3);
-    let mut vdc_h = Vdcorput::new(2);
-    // println!("min_l {}", Lch::<D65, f32>::min_l());
-    // println!("max_l {}", Lch::<D65, f32>::max_l());
-    // println!("min_chroma {}", Lch::<D65, f32>::min_chroma());
-    // println!("max_chroma {}", Lch::<D65, f32>::max_chroma());
+    let mut sgen = Sphere::new(&[3, 2]);
 
     for _ in 0..20 {
-        let lch_color = Lch::new(vdc_l.pop() * 100.0, 98.0, vdc_h.pop() * 360.0);
-        let new_color = palette::Srgb::from_color(lch_color);
+        let coord = sgen.pop();
+        let lab_color = Lab::new((coord[2] + 1.0) * 50.0, coord[0]*127.0, coord[1]*127.0);
+        // println!("{:#?}", lab_color);
+        let new_color = palette::Srgb::from_color(lab_color);
+        // println!("{:#?}", new_color);
         let test: Rgb<Srgb, u8> = new_color.into_format();
         println!("0x{:>08X}", u32::from(test));
     }
@@ -22,25 +20,26 @@ fn main() {
 
 /*
 Output:
-0xFF00674D
-0xFFC49F00
-0xFF0030B0
-0xFFD50400
-0xFF00E5FF
-0xFF004500
-0xFFB852FF
-0xFFFF839E
-0xFF002E40
-0xFF346400
-0xFF659FFF
-0xFF5F0000
-0xFF008CFF
-0xFF00EF80
-0xFF9B0078
-0xFFFF0073
-0xFF00FFFF
-0xFF2D1900
-0xFF0063FF
-0xFFFF8700
+
+0xFF0062FF
+0xFFFF00A7
+0xFF00321C
+0xFFEC0000
+0xFF00E7FF
+0xFF5700A9
+0xFF00A200
+0xFFFFC64D
+0xFF001B4A
+0xFFD400A5
+0xFF00D254
+0xFF820000
+0xFF0097C3
+0xFF8EBCFF
+0xFF1D4900
+0xFFD07B00
+0xFF00F8FF
+0xFF550029
+0xFF007E34
+0xFFFF474A
 
 */
