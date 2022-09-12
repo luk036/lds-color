@@ -9,7 +9,7 @@ fn main() {
 
     for _ in 0..20 {
         let coord = sgen.pop();
-        let lab_color = Lab::new((coord[2] + 1.0) * 50.0, coord[0]*127.0, coord[1]*127.0);
+        let lab_color = Lab::new((coord[2] + 1.0) * 50.0, coord[0] * 127.0, coord[1] * 127.0);
         // println!("{:#?}", lab_color);
         let new_color = palette::Srgb::from_color(lab_color);
         // println!("{:#?}", new_color);
