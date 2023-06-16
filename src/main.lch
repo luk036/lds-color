@@ -1,12 +1,12 @@
-use lds_rs::Vdcorput;
+use lds_rs::VdCorput;
 use palette::encoding::Srgb;
 use palette::rgb::Rgb;
 use palette::{FromColor, Lch};
 // use palette::white_point::D65;
 
 fn main() {
-    let mut vdc_l = Vdcorput::new(3);
-    let mut vdc_h = Vdcorput::new(2);
+    let mut vdc_l = VdCorput::new(3);
+    let mut vdc_h = VdCorput::new(2);
     // println!("min_l {}", Lch::<D65, f32>::min_l());
     // println!("max_l {}", Lch::<D65, f32>::max_l());
     // println!("min_chroma {}", Lch::<D65, f32>::min_chroma());
