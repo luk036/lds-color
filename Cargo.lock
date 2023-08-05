@@ -34,7 +34,8 @@ dependencies = [
 [[package]]
 name = "lds-rs"
 version = "0.1.0"
-source = "git+https://github.com/luk036/lds-rs#3a0f01f87e1b6dc8a62ec16fb6d1187841e86569"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c04499ef0d158349ebb15e9e91fec043ce348ef4e3af678a1c6c5b9d9b3cf127"
 
 [[package]]
 name = "num-traits"
