@@ -4,6 +4,15 @@ use palette::rgb::Rgb;
 use palette::{FromColor, Lab};
 // use palette::white_point::D65;
 
+/// Generates color values from a low-discrepancy sequence (LDS).
+///
+/// This program uses the Sobol sphere sampling algorithm from the `lds-rs` crate
+/// to generate coordinates in 3D space, converts them to LAB color space,
+/// and then outputs the colors as 32-bit ARGB hex values.
+///
+/// The generated colors have good visual distribution due to the low-discrepancy
+/// property of the Sobol sequence, making them useful for color palettes
+/// and data visualization where uniform color coverage is desired.
 fn main() {
     let mut sgen = Sphere::new(&[3, 2]);
 
